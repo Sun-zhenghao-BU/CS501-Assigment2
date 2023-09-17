@@ -3,4 +3,12 @@
     <string name="enter_2nd_number_here">Enter 2nd Number here</string>
     <string name="enter_1st_number_here">Enter 1st Number here</string>
     <string name="calculate">Calculate</string>
+    <string name="please_select_operation_type">Please Select Operation Type</string>
+
+    <string-array name="operation_type">
+        <item>Add</item>
+        <item>Subtract</item>
+        <item>Multiply</item>
+        <item>Divide</item>
+    </string-array>
 </resources>
