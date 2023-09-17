@@ -10,5 +10,6 @@
         <item>Subtract</item>
         <item>Multiply</item>
         <item>Divide</item>
+        <item>Module</item>
     </string-array>
 </resources>
