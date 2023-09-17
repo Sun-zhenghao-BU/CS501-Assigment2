@@ -56,20 +56,27 @@ class MainActivity : AppCompatActivity() {
                         if (num2 != 0.0) {
                             num1 / num2
                         } else {
+                            Toast.makeText(this, "Divide by Zero not allowed", Toast.LENGTH_SHORT).show()
                             null
                         }
                     }
-                    "Module" -> num1 % num2
+                    "Module" -> {
+                        if (num2 != 0.0) {
+                            num1 % num2
+                        } else {
+                            Toast.makeText(this, "Module by Zero not allowed", Toast.LENGTH_SHORT).show()
+                            null
+                        }
+                    }
                     else -> null
                 }
                 if (result == null) {
                     showResult.text = "Non-valid"
                 } else {
-                  showResult.text = result.toString()
+                    val formattedResult = String.format("%.2f", result)
+                    showResult.text = formattedResult
                 }
             }
         }
     }
-
-
 }
