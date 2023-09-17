@@ -2,6 +2,8 @@ package com.example.arithmetic
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -37,17 +39,41 @@ class MainActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(R.layout.spinner_layout)
             spinnerOption.adapter = adapter
         }
+        setInputWatcher(operand1)
+        setInputWatcher(operand2)
         calculate()
+    }
+
+    private fun setInputWatcher(editText: EditText) {
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length == 20) {
+                    Toast.makeText(this@MainActivity, "Maximum input 20 digits", Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+        })
     }
 
     private fun calculate() {
         calculate.setOnClickListener {
+            val num1Str = operand1.text.toString()
+            val num2Str = operand2.text.toString()
             val num1 = operand1.text.toString().toDoubleOrNull()
             val num2 = operand2.text.toString().toDoubleOrNull()
             val selectedOperation = spinnerOption.selectedItem.toString()
 
+//            Before calculate, clear the output of last calculation
+            showResult.text = ""
+
             if (num1 == null || num2 == null) {
-                Toast.makeText(this, "Please enter valid numbers", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter numbers as input", Toast.LENGTH_SHORT).show()
             } else {
                 val result = when (selectedOperation) {
                     "Add" -> num1 + num2
