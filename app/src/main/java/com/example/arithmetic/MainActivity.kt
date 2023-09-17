@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         operand2 = findViewById(R.id.operand2)
         calculate = findViewById(R.id.calculate)
         showResult = findViewById(R.id.showResult)
+        showResult.isSelected = true
 
         ArrayAdapter.createFromResource(
             this,
@@ -73,7 +74,12 @@ class MainActivity : AppCompatActivity() {
                 if (result == null) {
                     showResult.text = "Non-valid"
                 } else {
-                    val formattedResult = String.format("%.2f", result)
+                    var formattedResult = result.toString()
+                    formattedResult = if (formattedResult.length > 12) {
+                        String.format("%.2E", result)
+                    } else {
+                        String.format("%.2f", result)
+                    }
                     showResult.text = formattedResult
                 }
             }
