@@ -31,9 +31,9 @@ class MainActivity : AppCompatActivity() {
         ArrayAdapter.createFromResource(
             this,
             R.array.operation_type,
-            android.R.layout.simple_spinner_item
+            R.layout.spinner_layout
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.spinner_layout)
             spinnerOption.adapter = adapter
         }
         calculate()
