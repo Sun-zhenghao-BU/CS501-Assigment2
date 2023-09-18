@@ -63,8 +63,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculate() {
         calculate.setOnClickListener {
-            val num1Str = operand1.text.toString()
-            val num2Str = operand2.text.toString()
             val num1 = operand1.text.toString().toDoubleOrNull()
             val num2 = operand2.text.toString().toDoubleOrNull()
             val selectedOperation = spinnerOption.selectedItem.toString()
