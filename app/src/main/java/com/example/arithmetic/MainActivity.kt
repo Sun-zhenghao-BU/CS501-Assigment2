@@ -1,5 +1,4 @@
 package com.example.arithmetic
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -73,7 +72,7 @@ class MainActivity : AppCompatActivity() {
             if (num1 == null || num2 == null) {
                 Toast.makeText(this, "Please enter numbers as input", Toast.LENGTH_SHORT).show()
             } else {
-                val result = when (selectedOperation) {
+                var result = when (selectedOperation) {
                     "Add" -> num1 + num2
                     "Subtract" -> num1 - num2
                     "Multiply" -> num1 * num2
@@ -98,6 +97,9 @@ class MainActivity : AppCompatActivity() {
                 if (result == null) {
                     showResult.text = "Non-valid"
                 } else {
+                    if (result == -0.00) {
+                        result = 0.00
+                    }
                     var formattedResult = result.toString()
                     formattedResult = if (formattedResult.length > 12) {
                         String.format("%.2E", result)
